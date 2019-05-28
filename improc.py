@@ -22,3 +22,20 @@ def as_int_img(img):
     if img.dtype == np.dtype('float32'):
         return (img * 255).astype(np.uint8)
     return img
+
+# Shows image for certain amount of seconds
+def timshow(img, seconds=5):
+    fig = plt.figure()
+    plt.imshow(img)
+    plt.show(block=False)
+    plt.pause(3)
+    plt.close()
+
+# Read image into desired format, default=float
+def imread(filename, astype=float):
+    im = plt.imread(filename)
+    if (astype == int):
+        return as_int_img(im)
+    if (astype == float):
+        return as_float_img(im)
+    return None
